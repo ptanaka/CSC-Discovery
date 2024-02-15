@@ -16,16 +16,30 @@
     - name: Create Directory
       ansible.builtin.file:
         path: /opt/dellemc/avengers
-        state: directory      
+        state: directory
+
+    - name: File Copy
+      ansible.builtin.shell: "tar cvzf /home/avengers/CSC/CSC-Discovery/exporter.tgz ."
+      args:
+        chdir: /home/avengers/CSC/CSC-Discovery/exporter.dir
+
+    - name: Change owner/group
+      ansible.builtin.file:
+        path: /home/avengers/CSC/CSC-Discovery/exporter.tgz
+        mode: 0644
+        owner: avengers
+        group: avengers
+        state: file
+        force: true  
 
     - name: Exporter Module Un-archive
       ansible.builtin.unarchive:
-        src: /home/avengers/discovery/exporter.tgz      
-        dest: /opt/dellemc/avengers  
+        src: /home/avengers/CSC/CSC-Discovery/exporter.tgz
+        dest: /opt/dellemc/avengers
 
     - name: Copy systemd service file
       ansible.builtin.copy:
-        src: /home/avengers/discovery/powerstore_exporter.service      
+        src: /home/avengers/CSC/CSC-Discovery/powerstore_exporter.service      
         dest: /etc/systemd/system/powerstore_exporter.service
         owner: root
         group: root

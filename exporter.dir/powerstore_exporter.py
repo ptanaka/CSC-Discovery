@@ -8,7 +8,7 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 ### Adjust this section to your environment
 baseurl = "https://172.31.25.40/api/rest" # Use the IP of your PowerStore
 username = "admin"
-password = "P@ssw0rd1!"
+password = "Password1!"
 interval = "Five_Mins" #Five_Mins, One_Hour or One_Day. Don't use Twenty_Sec with this script, because it uses different schema
 headers = {"Content-type": "application/json"}
 

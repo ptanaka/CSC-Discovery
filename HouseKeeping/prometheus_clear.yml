@@ -15,6 +15,11 @@
         state: stopped
         enabled: false
 
+    - name: Pormetheus Service FIle Remove
+      ansible.builtin.file:
+        path: /etc/systemd/system/prometheus.service
+        state: absent
+
     - name: Prometheus Symbolic Link Remove
       ansible.builtin.file:
         path: /usr/local/prometheus
